@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Karla";
+  src: url("/public/fonts/Karla/Karla-VariableFont_wght.ttf");
+}
+
+* {
+  font-family: "Karla", system-ui, -apple-system,
+    /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
