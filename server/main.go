@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/caleb-mwasikira/go_blockchain/handlers"
+	"github.com/caleb-mwasikira/go_blockchain/server/handlers"
 	"github.com/caleb-mwasikira/go_blockchain/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
@@ -35,12 +35,12 @@ func init() {
 	}
 
 	// load web server certificate
-	serverCertFile = filepath.Join(utils.CertDir, "go_block.crt")
+	serverCertFile = filepath.Join(utils.SignedCertDir, "go_block.crt")
 	serverKeyFile = filepath.Join(utils.PrivateKeysDir, "go_block.key")
 }
 
 func main() {
-	viewsDir := filepath.Join(utils.ProjectPath, "views/")
+	viewsDir := filepath.Join(utils.ProjectPath, "server/views/")
 	viewEngine := html.New(viewsDir, ".html")
 
 	app := fiber.New(fiber.Config{

@@ -1,4 +1,4 @@
-package encrypt
+package asymmetric
 
 import (
 	"crypto/rand"
@@ -13,6 +13,7 @@ import (
 	"slices"
 	"strings"
 
+	sym "github.com/caleb-mwasikira/go_blockchain/encrypt/symmetric"
 	"github.com/caleb-mwasikira/go_blockchain/utils"
 )
 
@@ -39,7 +40,7 @@ func SavePrivateKeyToFile(key *rsa.PrivateKey, fpath string, encrypt_fn func() s
 	if encrypt_fn != nil {
 		// encrypt private key bytes
 		passphrase := encrypt_fn()
-		key_bytes, err := Encrypt(key_bytes, []byte(passphrase))
+		key_bytes, err := sym.Encrypt(key_bytes, []byte(passphrase))
 		if err != nil {
 			return fmt.Errorf("error encrypting private key; %v", err)
 		}
@@ -95,7 +96,7 @@ func LoadPrivateKeyFromFile(fpath string, decrypt_fn func() string) (*rsa.Privat
 
 		// decrypt pem bytes
 		ciphertext := pem_block.Bytes
-		key_bytes, err := Decrypt(ciphertext, []byte(passphrase))
+		key_bytes, err := sym.Decrypt(ciphertext, []byte(passphrase))
 		if err != nil {
 			return nil, ErrInvalidKeyType
 		}

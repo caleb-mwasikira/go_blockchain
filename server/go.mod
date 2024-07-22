@@ -1,4 +1,4 @@
-module github.com/caleb-mwasikira/go_blockchain
+module github.com/caleb-mwasikira/go_blockchain/server
 
 go 1.22.3
 

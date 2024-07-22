@@ -1,4 +1,4 @@
-package encrypt
+package symmetric
 
 import (
 	"crypto/aes"
